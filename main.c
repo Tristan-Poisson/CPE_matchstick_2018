@@ -71,7 +71,7 @@ int get_match(int nbmatch)
     ssize_t size = 0;
     int mt = 0;
 
-    write(1, "Matches: ", 6);
+    write(1, "Matches: ", 9);
     size = getline(&line, &n, stdin);
     mt = my_getnbr(line);
     return (mt);
@@ -96,7 +96,7 @@ int game_core(char **av, int *board, int max)
     while (game == 0){
         display_board(board, line, max);
         ln = get_line(line);
-        board[ln] = board[ln] - get_match(board[ln]);
+        board[ln - 1] = board[ln - 1] - get_match(board[ln - 1]);
         game = check_win(board, 1, line);
     }
 }

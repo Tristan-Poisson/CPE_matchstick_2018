@@ -29,19 +29,23 @@ int match_core(char **av)
     int *board = malloc(sizeof(int) * line);
     int i = 0;
     int max;
+    int end;
     while (i < line){
         board[i] = 1 + (i * 2);
         max = board[i] + 2;
         i = i + 1;
     }
-    game_core(av, board, max);
+    end = game_core(av, board, max);
     free(board);
+    return (end);
 }
 
 int main(int ac, char **av)
 {
+    int end = 0;
     int check = check_err(ac);
     if (check == 84)
         return (84);
-    match_core(av);
+    end = match_core(av);
+    return (end);
 }

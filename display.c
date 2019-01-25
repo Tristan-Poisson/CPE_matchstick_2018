@@ -7,7 +7,7 @@
 
 #include "include/my.h"
 #include <stdio.h>
-#include <stdio.h>
+#include <unistd.h>
 
 int disp_line(int match, int blank, int max)
 {
@@ -40,5 +40,5 @@ int display_board(int *board, int size, int max)
     }
     for (i = 0; i < max; i = i + 1)
 	write(1, "*", 1);
-    write(1, "\n", 1);
+    write(1, "\n\n", 2);
 }

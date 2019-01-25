@@ -7,7 +7,10 @@
 
 NAME	=	matchstick
 
-SRC	=	main.c
+SRC	=	main.c \
+		check.c \
+		display.c \
+		get.c 
 
 OBJ	=	$(SRC:.c=.o)
 

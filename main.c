@@ -12,15 +12,26 @@
 
 int game_core(char **av, int *board, int max)
 {
-    int game = 0;
-    int ln;
+    int *gmtn = malloc(sizeof(int) * 2);
+    int *lnmt = malloc(sizeof(int) * 2);
     int line = my_getnbr(av[1]);
-    while (game == 0){
+    for (gmtn[0] = 0; gmtn[0] == 0; gmtn[0] = gmtn[0]){
         display_board(board, line, max);
-        ln = get_line(line);
-        board[ln - 1] = board[ln - 1] - get_match(board[ln - 1]);
-        game = check_win(board, 1, line);
+        my_putstr("Your turn\n");
+        for (gmtn[1] = 0; gmtn[1] == 0; gmtn[1] = gmtn[1]){
+            lnmt[0] = get_line(line);
+            if (lnmt[0] == -1)
+                return (0);
+            lnmt[1] = get_match(board[lnmt[0] - 1]);
+            if (lnmt[1] == -1)
+                return (0);
+            gmtn[1] = 1;
+        }
+        board[lnmt[0] - 1] = board[lnmt[0] - 1] - lnmt[1];
+        gmtn[0] = check_win(board, 2, line);
+        gmtn[0] = check_win(board, 1, line);
     }
+    return (gmtn[0]);
 }
 
 int match_core(char **av)

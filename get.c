@@ -19,6 +19,8 @@ int get_line(int nbline)
 
     write(1, "Line: ", 6);
     size = getline(&line, &n, stdin);
+    if (size == -1)
+        return (-1);
     ln = my_getnbr(line);
     return (ln);
 }
@@ -32,6 +34,8 @@ int get_match(int nbmatch)
 
     write(1, "Matches: ", 9);
     size = getline(&line, &n, stdin);
+    if (size == -1)
+        return (-1);
     mt = my_getnbr(line);
     return (mt);
 }

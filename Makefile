@@ -10,7 +10,8 @@ NAME	=	matchstick
 SRC	=	main.c \
 		check.c \
 		display.c \
-		get.c 
+		get.c \
+		ai_turn.c
 
 OBJ	=	$(SRC:.c=.o)
 

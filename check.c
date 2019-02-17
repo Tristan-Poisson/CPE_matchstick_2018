@@ -26,3 +26,31 @@ int check_win(int *board, int pl, int line)
     }
     return (pl);
 }
+
+int check_line(int ln, int line)
+{
+    if (ln > 0 && ln <= line)
+        return (1);
+    else {
+        my_putstr("Error: this line is out of range\n");
+        return (0);
+    }
+}
+
+int check_match(char **av, int nbmatch, int match)
+{
+    int mxmatch = my_getnbr(av[2]);
+    if (match == 0) {
+        my_putstr("Error: you have to remove at least one match\n");
+        return (0);
+    }
+    if (match > mxmatch) {
+        my_putstr("Error: out of range\n");
+        return (0);
+    }
+    if (match > nbmatch) {
+        my_putstr("Error: not enough matches on this line\n");
+	return (0);
+    }
+    return (1);
+}

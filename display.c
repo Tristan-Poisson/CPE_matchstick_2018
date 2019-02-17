@@ -42,3 +42,20 @@ int display_board(int *board, int size, int max)
 	write(1, "*", 1);
     write(1, "\n\n", 2);
 }
+
+int disp_play(int *lnmt)
+{
+    my_putstr("Player removed ");
+    my_put_nbr(lnmt[1]);
+    my_putstr(" match(es) from line ");
+    my_put_nbr(lnmt[0]);
+    my_putstr("\n");
+}
+
+int disp_end(int vic)
+{
+    if (vic == 1)
+        my_putstr("I lost... snif... but I'll get you next time!!\n");
+    else if (vic == 2)
+        my_putstr("You lost, too bad...\n");
+}

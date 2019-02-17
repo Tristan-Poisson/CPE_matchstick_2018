@@ -25,12 +25,17 @@ int game_core(char **av, int *board, int max)
             lnmt[1] = get_match(board[lnmt[0] - 1]);
             if (lnmt[1] == -1)
                 return (0);
-            gmtn[1] = 1;
+            gmtn[1] = check_match(av, board[lnmt[0] - 1], lnmt[1]);
         }
+        disp_play(lnmt);
         board[lnmt[0] - 1] = board[lnmt[0] - 1] - lnmt[1];
-        gmtn[0] = check_win(board, 2, line);
-        gmtn[0] = check_win(board, 1, line);
+        if ((gmtn[0] = check_win(board, 2, line)) != 0)
+            break;
+        board = ai_turn(av, board, max);
+        if ((gmtn[0] = check_win(board, 1, line)) != 0)
+            break;
     }
+    display_board(board, line, max);
     return (gmtn[0]);
 }
 
@@ -48,6 +53,7 @@ int match_core(char **av)
     }
     end = game_core(av, board, max);
     free(board);
+    disp_end(end);
     return (end);
 }
 

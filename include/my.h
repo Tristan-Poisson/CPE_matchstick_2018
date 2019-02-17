@@ -19,3 +19,8 @@ int get_line(int nbline);
 int get_match(int nbmatch);
 int game_core(char **av, int *board, int max);
 int match_core(char **av);
+int *ai_turn(char **av, int *board, int max);
+int check_line(int ln, int line);
+int check_match(char **av, int nbmatch, int match);
+int disp_play(int *lnmt);
+int disp_end(int vic);

@@ -16,12 +16,15 @@ int get_line(int nbline)
     size_t n = 0;
     ssize_t size = 0;
     int ln = 0;
-
-    write(1, "Line: ", 6);
-    size = getline(&line, &n, stdin);
-    if (size == -1)
-        return (-1);
-    ln = my_getnbr(line);
+    int i = 0;
+    while (i == 0) {
+        write(1, "Line: ", 6);
+        size = getline(&line, &n, stdin);
+        if (size == -1)
+            return (-1);
+        ln = my_getnbr(line);
+        i = check_line(ln, nbline);
+    }
     return (ln);
 }
 
@@ -30,7 +33,7 @@ int get_match(int nbmatch)
     char *line = NULL;
     size_t n = 0;
     ssize_t size = 0;
-    int mt = 0;
+    int mt = -2;
 
     write(1, "Matches: ", 9);
     size = getline(&line, &n, stdin);
